@@ -117,7 +117,7 @@ impl Peer {
             .expect("Attempt to connect to undefined endpoint");
 
         let udp_conn =
-            socket2::Socket::new(Domain::for_address(addr), Type::STREAM, Some(Protocol::UDP))?;
+            socket2::Socket::new(Domain::for_address(addr), Type::DGRAM, Some(Protocol::UDP))?;
         udp_conn.set_reuse_address(true)?;
         // SO_REUSEPORT is not really needed here, as long as the wildcard address is used in the bind
         udp_conn.set_reuse_port(true)?;
